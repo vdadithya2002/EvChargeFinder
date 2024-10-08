@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Add Booking</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Add Booking</h2>
+        <form method="POST">
+            {% csrf_token %}
+            
+            <!-- Render all form fields dynamically -->
+            {{ form.as_p }}
+            
+            <button type="submit" class="btn btn-primary">Book Slot</button>
+        </form>
+        <a href="{% url 'booking_list' %}" class="btn btn-secondary">Back to Booking List</a>
+    </div>
+</body>
+</html>

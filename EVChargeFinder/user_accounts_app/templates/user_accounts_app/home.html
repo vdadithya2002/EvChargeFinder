@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <h1>VoltSpot</h1>
+        </div>
+        <div class="buttons">
+            <a href="{% url 'booking_list' %}">
+                <button class="button booking">My Bookings</button>
+            </a>
+            <a href="{% url 'login' %}">
+                <button class="button login">Login</button>
+            </a>
+            <a href="{% url 'register' %}">
+                <button class="button register">Register</button>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="main-section">
+            <h2>Find The Nearest EV Charger Point</h2>
+            <!-- Removed the search bar and find by states options -->
+            <a href="{% url 'add_booking' %}">
+                <button class="button add-booking">Add Booking</button>
+            </a>
+        </section>
+
+        <!-- Charging Stations List -->
+        <section class="stations-section">
+            <h2>Available Charging Stations</h2>
+            <ul class="station-list">
+                {% for station in stations %}
+                    <li>
+                        <strong>{{ station.name }}</strong> - {{ station.location }} - Slots Available: {{ station.available_slots }}
+                    </li>
+                {% empty %}
+                    <li>No charging stations available.</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="more">
+                <h4>More</h4>
+                <ul>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                </ul>
+            </div>
+            <div class="support">
+                <h4>Support</h4>
+                <input type="email" placeholder="Email Address">
+                <button class="button subscribe">Subscribe</button>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charging Stations</title>
+</head>
+<body>
+    <h2>Charging Stations</h2>
+    <ul>
+        {% for station in stations %}
+            <li>
+                {{ station.name }} - {{ station.location }} - Slots Available: {{ station.available_slots }}
+            </li>
+        {% empty %}
+            <li>No charging stations available.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
